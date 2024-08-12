@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Application;
+use App\Http\Controllers\MailSendController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,23 +16,35 @@ use Inertia\Inertia;
 |
 */
 
+
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+    return Inertia::render('Top');
+})->name('top');
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/#header', function () {
+    return Inertia::render('Top');
+})->name('top_redirect');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+Route::get('/company_profile', function () {
+    return Inertia::render('CompanyProfile');
+})->name('company_profile');
+
+Route::get('/message', function () {
+    return Inertia::render('Message');
+})->name('message');
+
+Route::get('/products', function () {
+    return Inertia::render('Products');
+})->name('products');
+
+Route::get('/factory', function () {
+    return Inertia::render('Factory');
+})->name('factory');
+
+Route::get('/#contact', function () {
+    return Inertia::render('Top');
+})->name('contact');
+
+Route::post('/mail', [MailSendController::class, 'send'])->name('mail');;
 
 require __DIR__.'/auth.php';

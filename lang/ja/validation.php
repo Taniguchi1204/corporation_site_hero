@@ -95,8 +95,8 @@ return [
     'numeric'              => ':attributeには、数字を指定してください。',
     'password'             => ':attributeが間違っています',
     'present'              => ':attributeが存在している必要があります。',
-    'regex'                => ':attributeには、有効な正規表現を指定してください。',
-    'required'             => ':attributeは、必ず指定してください。',
+    'regex'                => ':attributeには、有効な電話番号を入力してください。',
+    'required'             => ':attributeは、必ず入力してください。',
     'required_if'          => ':otherが:valueの場合、:attributeを指定してください。',
     'required_unless'      => ':otherが:values以外の場合、:attributeを指定してください。',
     'required_with'        => ':valuesが指定されている場合、:attributeも指定してください。',
@@ -145,4 +145,11 @@ return [
     | of "email". This simply helps us make our message more expressive.
     |
     */
+
+    'attributes' => [
+        'name' => '名前',
+        'tel' => '電話番号',
+        'mail' => 'メールアドレス',
+        'message' => 'お問い合わせ内容',
+    ],
 ];
